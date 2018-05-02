@@ -14,6 +14,8 @@ void parse_cl_arguments(map<string, string>& args, const int argcount, char *arg
     }
 }
 
+bool check_correct(map<string, string>& args){}
+
 int main(int argc, char* argv[]) {
     cout << "+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*\n"
          << "+*                                              +*\n"

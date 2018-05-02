@@ -108,5 +108,24 @@ BOOST_AUTO_TEST_CASE(test_7)
 								     "My name starts with A!",
 								     "One, two, three, four, fiv"                                     
                                     };
-   BOOST_TEST(input_param > expected);
+   BOOST_TEST(input_param > expected);   
+}
+
+//testcase 8: checking whether command lines parameters are corrrect
+BOOST_AUTO_TEST_CASE(test_7)
+{
+    //initial arguments should be entered
+	vector<string> input_param = {"One, two, three, four, five",
+								  "I am flying in the sky.",
+								  "I am a toy aeroplane,",
+                                  "My name starts with A!"
+								  };
+    stringtransform::sort(input_param);
+    bool isCorrect = true;
+    const vector<string> expected = {"I am a toy aeroplane,",
+								     "I am flying in the sky.",
+								     "My name starts with A!",
+								     "One, two, three, four, fiv"                                     
+                                    };
+   BOOST_TEST(isCorrect > expected);   
 }
