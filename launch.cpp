@@ -14,8 +14,6 @@ void parse_cl_arguments(map<string, string>& args, const int argcount, char *arg
     }
 }
 
-bool check_correct(map<string, string>& args){}
-
 int main(int argc, char* argv[]) {
     cout << "+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*\n"
          << "+*                                              +*\n"
@@ -33,14 +31,35 @@ int main(int argc, char* argv[]) {
         return 1;         
     }
     
-    map<string,string> args;
-    
+    map<string,string> args;    
     parse_cl_arguments(args, argc - 1, argv + 1);
-     
-    ifstream input(args["-i"]);
-    ofstream output(args["-t"]);
-    string word = args["-w"];
     
+    // check whether map contains necessary keys and values
+    map<string,string>::iterator it = args.find("-i");    
+    string inputFileName;
+    if(it == args.end())
+        throw runtime_error(string("i argument is not found"));
+        
+    //element found;
+    inputFileName = it->second;
+    ifstream input(inputFileName);
+        
+    it = args.find("-t");
+    string outputFileName;
+
+    if(it == args.end())
+            throw runtime_error(string("t argument is not found"));
+    
+    outputFileName = it->second;
+    ofstream output(outputFileName);    
+    
+    it = args.find("-w");
+    string word;
+    if(it == args.end())
+            throw runtime_error(string("w argument is not found"));
+    
+    word = it->second;
+   
     vector<string> strings;
     for (string line; getline(input, line);) {
         strings.push_back(line);
